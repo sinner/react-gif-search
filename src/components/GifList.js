@@ -3,11 +3,11 @@ import GifItem from './GifItem';
 
 const GifList = (props) => {
   const gifItems = props.gifs.map((image) => {
-    return <GifItem key={image.id} gif={image} />
+    return <GifItem key={image.id} term={props.term} gif={image} />
   });
 
   return (
-    <ul>{gifItems}</ul>
+    <div className="gif-list">{gifItems}</div>
   );
 };
 
