@@ -55,9 +55,11 @@ class App extends Component {
         </div>
         <br />
         <div className="App-intro">
-            <SearchBar term={this.state.term} onTermChange={this.handleTermChange} />
+            <SearchBar onTermChange={this.handleTermChange} />
         </div>
-        <GifList gifs={this.state.gifs} />
+        <GifList term={this.state.term}
+                 gifs={this.state.gifs}
+                 onGifSelect={selectedGif => this.openModal(selectedGif) }/>
         <GifModal modalIsOpen={this.state.modalIsOpen}
                   selectedGif={this.state.selectedGif}
                   onRequestClose={ () => this.closeModal() } />
