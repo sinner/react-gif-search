@@ -1,10 +1,13 @@
 import React, { Component } from 'react';
-import request from 'superagent';
+import request from 'superagent'
+
+import config from './config/main';
 import logo from './logo.svg';
 import './App.css';
-import config from './config/main';
+
 import SearchBar from './components/SearchBar';
 import GifList from './components/GifList';
+
 import GifModal from './components/GifModal';
 
 
@@ -13,7 +16,7 @@ class App extends Component {
   constructor() {
     super();
     // this.handleTermChange = this.handleTermChange.bind(this);
-    this.giphyAPIKey = config.giphyAPIKey;
+    this.giphyAPIKey = config.dev.giphyAPIKey;
     this.state = {
       gifs: [],
       term: '',
@@ -51,7 +54,7 @@ class App extends Component {
       <div className="App">
         <div className="App-header">
           <img src={logo} className="App-logo" alt="logo" />
-          <h2>Welcome to React</h2>
+          <h2>React Giphy</h2>
         </div>
         <br />
         <div className="App-intro">
