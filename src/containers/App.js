@@ -30,6 +30,7 @@ class App extends Component {
         <div className="App-intro">
           <SearchBar onTermChange={this.props.actions.requestGifs} />
         </div>
+        <div>{ this.props.gifsRequestMessage }</div>
         <div>
           <GifList gifs={ this.props.gifs }
                    term={ this.props.term }
@@ -48,6 +49,8 @@ function mapStateToProps (state) {
   return {
     gifs: state.gifs.data,
     term: state.gifs.term,
+    gifsError: state.gifs.error,
+    gifsRequestMessage: state.gifs.message,
     modalIsOpen: state.modal.modalIsOpen,
     selectedGif: state.modal.selectedGif
   };

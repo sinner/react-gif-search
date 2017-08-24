@@ -2,7 +2,9 @@ import { REQUEST_GIFS } from '../actions';
 
 const initialState =  {
   data: [],
-  term: ''
+  term: '',
+  error: false,
+  message: ''
 };
 
 /**
@@ -13,11 +15,14 @@ const initialState =  {
  * @returns {*}
  */
 export default function gifs(state = initialState, action) {
-  console.log(action);
   switch (action.type) {
     case REQUEST_GIFS:
       return {
-        ...state, data: action.payload.body.data, term: action.meta.term
+        ...state,
+        data: (action.payload.body)?action.payload.body.data:[],
+        term: action.meta.term,
+        error: !(action.payload.body),
+        message: !(action.payload.body)?action.payload.message:`There are the results of "${action.meta.term}" (${action.payload.body.data.length})`
       };
     default:
       return state;
