@@ -4,6 +4,7 @@ import ReduxPromise from 'redux-promise';
 import rootReducer from '../reducers';
 
 export default function configureStore(initialState) {
+
   const store = createStore(
     rootReducer,
     initialState,
@@ -22,4 +23,5 @@ export default function configureStore(initialState) {
   }
 
   return store;
+
 }
