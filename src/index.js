@@ -2,8 +2,8 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import { Provider } from 'react-redux';
-import App from './containers/App';
-import configureStore from './store/configureStore';
+import Home from './containers/Home';
+import { configureStore } from './store/configureStore';
 import registerServiceWorker from './registerServiceWorker';
 import './styles/app.css';
 
@@ -11,7 +11,7 @@ const store = configureStore();
 
 ReactDOM.render(
   <Provider store={store}>
-    <App />
+    <Home />
   </Provider>,
   document.getElementById('app')
 );

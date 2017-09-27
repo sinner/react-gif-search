@@ -4,14 +4,14 @@ import { bindActionCreators } from 'redux';
 
 import config from '../config/main';
 import logo from '../logo.svg';
-import './App.css';
+import './Home.css';
 
 import * as Actions from '../actions';
 import SearchBar from '../components/SearchBar';
 import GifList from "../components/GifList";
 import GifModal from "../components/GifModal";
 
-class App extends Component {
+class Home extends Component {
 
   constructor() {
     super();
@@ -62,4 +62,4 @@ function mapDispatchToProps(dispatch) {
   };
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(App);
+export default connect(mapStateToProps, mapDispatchToProps)(Home);
