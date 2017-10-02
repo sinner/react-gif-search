@@ -7,9 +7,9 @@ import logo from '../logo.svg';
 import './Home.css';
 
 import * as Actions from '../actions';
-import SearchBar from '../components/SearchBar';
-import GifList from "../components/GifList";
-import GifModal from "../components/GifModal";
+import SearchBar from '../components/Home/SearchBar';
+import GifList from "../components/Home/GifList";
+import GifModal from "../components/Home/GifModal";
 
 class Home extends Component {
 

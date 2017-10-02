@@ -3,9 +3,9 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "react": "^15.6.1",
-    "react-dom": "^15.6.1",
-    "react-modal": "^2.2.4",
+    "react": "^15.6.2",
+    "react-dom": "^15.6.2",
+    "react-modal": "^2.3.2",
     "react-redux": "^5.0.6",
     "react-router-dom": "^4.2.2",
     "react-router-redux": "^5.0.0-alpha.6",
@@ -13,8 +13,8 @@
     "redux": "^3.7.2",
     "redux-form": "^7.0.4",
     "redux-promise": "^0.5.3",
-    "redux-promise-middleware": "^4.3.0",
-    "superagent": "^3.6.0"
+    "redux-promise-middleware": "^4.4.1",
+    "superagent": "^3.6.1"
   },
   "scripts": {
     "start": "react-scripts start",
