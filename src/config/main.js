@@ -1,13 +1,33 @@
 const config = {
   dev: {
-    giphyAPIKey: '5a59853514ae4dfbbe6904500d997350',
-    giphyAPIUrl: 'http://api.giphy.com/v1/gifs/search',
-    giphyResultsLimit: 50
+    giphy: {
+      APIKey: '5a59853514ae4dfbbe6904500d997350',
+      APIUrl: 'http://api.giphy.com/v1/gifs/search',
+      resultsLimit: 50
+    },
+    firebase: {
+      apiKey: 'AIzaSyCLtjl1fFHhQ_XxnkAW__PNsdDcdxm8Sec',
+      authDomain: 'giphy-search-5d5c5.firebaseapp.com',
+      databaseURL: 'https://giphy-search-5d5c5.firebaseio.com',
+      projectId: 'giphy-search-5d5c5',
+      storageBucket: 'giphy-search-5d5c5.appspot.com',
+      messagingSenderId: '1085267129640'
+    }
   },
   prod: {
-    giphyAPIKey: '0170046be25a4a839461fca39345bb6f',
-    giphyAPIUrl: 'http://api.giphy.com/v1/gifs/search',
-    giphyResultsLimit: 50
+    giphy: {
+      APIKey: '5a59853514ae4dfbbe6904500d997350',
+      APIUrl: 'http://api.giphy.com/v1/gifs/search',
+      resultsLimit: 50
+    },
+    firebase: {
+      apiKey: 'AIzaSyCLtjl1fFHhQ_XxnkAW__PNsdDcdxm8Sec',
+      authDomain: 'giphy-search-5d5c5.firebaseapp.com',
+      databaseURL: 'https://giphy-search-5d5c5.firebaseio.com',
+      projectId: 'giphy-search-5d5c5',
+      storageBucket: 'giphy-search-5d5c5.appspot.com',
+      messagingSenderId: '1085267129640'
+    }
   }
 };
 
