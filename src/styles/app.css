@@ -3,17 +3,44 @@
     width: 90%;
 }
 
+.fa-heart {
+    color: #a94442;
+    font-size: 12px;
+    position: absolute;
+    right: 5px;
+    top: 5px;
+    cursor: pointer;
+}
+
+.fa-heart:hover {
+    color: #ccc;
+}
+
+.fa-heart-o {
+    font-size: 12px;
+    position: absolute;
+    right: 5px;
+    top: 5px;
+    cursor: pointer;
+}
+
+.fa-heart-o:hover {
+    color: #a94442;
+}
+
 .gif-item {
     box-shadow: 2px 2px 4px 0 #ccc;
     box-sizing: border-box;
     display: inline-block;
     margin: 0 0 1.5em;
     padding: 1em;
+    position: relative;
     width: 100%;
 }
 
 .gif-item img {
     width: 100%;
+    cursor: pointer;
 }
 
 .gif-list {
@@ -23,7 +50,15 @@
     padding: 0;
 }
 
-input {
+.gif-modal {
+    left: 50%;
+    position: absolute;
+    text-align: center;
+    top: 50%;
+    transform: translateX(-50%) translateY(-50%);
+}
+
+.search input {
     display: block;
     font-size: 22px;
     height: 50px;
@@ -68,12 +103,4 @@ input {
     .app {
         width: 1140px;
     }
-}
-
-.gif-modal {
-    left: 50%;
-    position: absolute;
-    text-align: center;
-    top: 50%;
-    transform: translateX(-50%) translateY(-50%);
 }

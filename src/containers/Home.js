@@ -34,7 +34,10 @@ class Home extends Component {
         <div>
           <GifList gifs={ this.props.gifs }
                    term={ this.props.term }
-                   onGifSelect={ selectedGif => this.props.actions.openModal({selectedGif}) } />
+                   onGifSelect={ selectedGif => this.props.actions.openModal({selectedGif}) }
+                   onFavoriteSelect={ selectedGif => this.props.actions.favoriteGif({selectedGif}) }
+                   onFavoriteDeselect={ selectedGif => this.props.actions.unfavoriteGif({selectedGif}) }
+                   isAuthenticated={ this.props.authenticated } />
 
         </div>
         <GifModal modalIsOpen={ this.props.modalIsOpen }
@@ -47,6 +50,7 @@ class Home extends Component {
 
 function mapStateToProps (state) {
   return {
+    authenticated: state.auth.authenticated,
     gifs: state.gifs.data,
     term: state.gifs.term,
     gifsError: state.gifs.error,

@@ -10,14 +10,19 @@ class Header extends React.Component {
     this.props.signOutUser();
   }
 
+  getSignOutTitle() {
+    return 'Sign out '+this.props.user.email;
+  }
+
   renderAuthLinks() {
     if (this.props.authenticated) {
+
       return [
         <li className="nav-item" key={1}>
           <Link className="nav-link" to="/favorites">My Favorites</Link>
         </li>,
         <li className="nav-item" key={2}>
-          <a className="nav-link" href="#" onClick={() => this.handleSignout()}>Sign Out</a>
+          <a className="nav-link" title={this.getSignOutTitle()} onClick={() => this.handleSignout()}>Sign Out</a>
         </li>
       ]
     }
@@ -42,6 +47,11 @@ class Header extends React.Component {
               <Link to="/" className="navbar-brand">React2Gifs</Link>
             </div>
             <ul className="nav navbar-nav navbar-right">
+              <li>
+                <Link to="/" className="navbar-brand">
+                  <i className="fa fa-search"></i>
+                </Link>
+              </li>
               { this.renderAuthLinks() }
             </ul>
           </div>
@@ -53,7 +63,8 @@ class Header extends React.Component {
 
 function mapStateToProps(state) {
   return {
-    authenticated: state.auth.authenticated
+    authenticated: state.auth.authenticated,
+    user: state.auth.user
   }
 }
 

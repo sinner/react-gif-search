@@ -23,10 +23,6 @@ const validate = values => {
 
 class Login extends React.Component {
 
-  constructor () {
-    super();
-  }
-
   componentWillUnmount() {
     this.props.removeErrorMessage();
   }

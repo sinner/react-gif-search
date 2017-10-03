@@ -10,6 +10,7 @@ export const SIGN_OUT_USER = 'SIGN_OUT_USER';
 export const AUTH_ERROR = 'AUTH_ERROR';
 export const AUTH_USER = 'AUTH_USER';
 export const REMOVE_ERROR_MESSAGE = 'REMOVE_ERROR_MESSAGE';
+export const FETCH_FAVORITED_GIFS = 'FETCH_FAVORITED_GIFS';
 
 const API_URL = config.dev.giphy.APIUrl;
 const API_KEY = config.dev.giphy.APIKey;
@@ -73,7 +74,7 @@ export function signUpUser(credentials) {
   return function(dispatch) {
     Firebase.auth().createUserWithEmailAndPassword(credentials.email, credentials.password)
       .then(response => {
-        dispatch(authUser());
+        dispatch(authUser(Firebase.auth().currentUser));
       })
       .catch(error => {
         console.log(error);
@@ -86,7 +87,7 @@ export function signInUser(credentials) {
   return function(dispatch) {
     Firebase.auth().signInWithEmailAndPassword(credentials.email, credentials.password)
       .then(response => {
-        dispatch(authUser());
+        dispatch(authUser(Firebase.auth().currentUser));
       })
       .catch(error => {
         console.log(error);
@@ -95,9 +96,10 @@ export function signInUser(credentials) {
   }
 }
 
-export function authUser() {
+export function authUser(user) {
   return {
-    type: AUTH_USER
+    type: AUTH_USER,
+    payload: user
   }
 }
 
@@ -109,13 +111,61 @@ export function authError(error) {
 }
 
 export function signOutUser() {
-  return {
-    type: SIGN_OUT_USER
+  return function (dispatch) {
+    Firebase.auth().signOut()
+      .then(() =>{
+        dispatch({
+          type: SIGN_OUT_USER
+        })
+      });
   }
 }
+
+export function verifyAuth() {
+  return function (dispatch) {
+    Firebase.auth().onAuthStateChanged(user => {
+      if (user) {
+        dispatch(authUser(Firebase.auth().currentUser));
+      }
+      else {
+        dispatch(signOutUser());
+      }
+    });
+  }
+}
+
 
 export function removeErrorMessage() {
   return {
     type: REMOVE_ERROR_MESSAGE
+  }
+}
+
+export function favoriteGif({selectedGif}) {
+  const userUid = Firebase.auth().currentUser.uid;
+  const gifId = selectedGif.id;
+
+  return dispatch => Firebase.database().ref(userUid).update({
+    [gifId]: selectedGif
+  });
+}
+
+export function unfavoriteGif({selectedGif}) {
+  const userUid = Firebase.auth().currentUser.uid;
+  const gifId = selectedGif.id;
+
+  return dispatch => Firebase.database().ref(userUid).child(gifId).remove();
+}
+
+export function fetchFavoritedGifs() {
+  return function(dispatch) {
+    const userUid = Firebase.auth().currentUser.uid;
+
+    Firebase.database().ref(userUid).on('value', snapshot => {
+      dispatch({
+        type: FETCH_FAVORITED_GIFS,
+        payload: snapshot.val()
+      })
+    });
   }
 }
