@@ -26,14 +26,15 @@ export default function gifs(state = initialState, action) {
         message: !(action.payload.body)?action.payload.message:`There are the results of "${action.meta.term}" (${action.payload.body.data.length})`
       };
     case FETCH_FAVORITED_GIFS:
-      var arr =[];
+      var gifsArr =[];
       for( var i in action.payload ) {
         if (action.payload.hasOwnProperty(i)){
-          arr.push(action.payload[i]);
+          gifsArr.push(action.payload[i]);
         }
       }
       return {
-        ...state, favorites: arr
+        ...state,
+        favorites: gifsArr
       };
 
     default:
